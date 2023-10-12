@@ -71,7 +71,31 @@ public class Project1 {
             }
         }
         scn.close();
-                
+        
+        
+        // GAUSS ELIMINATION BEGINS
+        System.out.println("");
+
+        //FOWARD ELIMINATION
+            //(n-1)steps 
+            //1st step: Look at first row, first column
+            int greatestVal= matrix[0][0];
+            int EquaNum =0;
+        for(int i = 0; i<numEquations; i++){
+            if(greatestVal < matrix[i][0])
+                greatestVal = matrix[i][0];
+                EquaNum = i;
+        }
+        if(EquaNum !=0){
+            for(int i =0; i<4; i++){
+                int temp = matrix[0][i];
+                matrix[0][i] = matrix[EquaNum][i];
+                matrix[EquaNum][i]= temp;
+            }
+        }
+        printMatrix(matrix, numEquations);
+
+        
     }
 
     private static int[] getEquation() {
@@ -95,7 +119,7 @@ public class Project1 {
                 array[i] = scn.nextInt();
                 }
             }
-        scn.close();
+        
         return array;
 
     }
